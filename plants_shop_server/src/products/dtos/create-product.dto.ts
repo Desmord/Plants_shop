@@ -2,7 +2,6 @@ import { IsNotEmpty, IsString, Length } from 'class-validator';
 
 export class CreateProductDTO {
   id: string;
-  images: string[] | [];
 
   @IsNotEmpty()
   @IsString()
@@ -10,7 +9,7 @@ export class CreateProductDTO {
   title: string;
 
   @IsNotEmpty()
-  price: number;
+  price: string;
 
   @Length(5, 200)
   description: string;
@@ -18,7 +17,6 @@ export class CreateProductDTO {
 
 export class UpdateProductDTO {
   id: string;
-  images: string[] | [];
 
   @IsNotEmpty()
   @IsString()
@@ -26,8 +24,11 @@ export class UpdateProductDTO {
   title: string;
 
   @IsNotEmpty()
-  price: number;
+  price: string;
 
   @Length(5, 200)
   description: string;
+
+  quantity: string;
+  orderId: string;
 }

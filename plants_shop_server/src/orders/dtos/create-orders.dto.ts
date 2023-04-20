@@ -4,9 +4,6 @@ export class CreateOrderDTO {
   id: string;
 
   @IsNotEmpty()
-  products: { quantity: number; productId: string }[];
-
-  @IsNotEmpty()
   @IsString()
   @Length(5, 40)
   firstName: string;
@@ -22,7 +19,6 @@ export class CreateOrderDTO {
   adress: string;
 
   @IsString()
-  @Length(5, 200)
   clientNotes: string;
 }
 
@@ -30,9 +26,6 @@ export class UpdateOrderDTO {
   id: string;
 
   @IsNotEmpty()
-  products: { quantity: number; productId: string }[];
-
-  @IsNotEmpty()
   @IsString()
   @Length(5, 40)
   firstName: string;
@@ -48,6 +41,8 @@ export class UpdateOrderDTO {
   adress: string;
 
   @IsString()
-  @Length(5, 200)
   clientNotes: string;
+
+  quantity: string;
+  productId: string;
 }
