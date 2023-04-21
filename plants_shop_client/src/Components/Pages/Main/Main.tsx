@@ -19,8 +19,8 @@ const Main = () => {
         const isStoreEmpty = products.length ? false : true;
 
         if (isStoreEmpty) getData();
-        
-    }, [])
+
+    }, [products])
 
     return (
         <div className={styles.container}>Main</div>

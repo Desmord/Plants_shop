@@ -1,8 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { PayloadAction } from '@reduxjs/toolkit';
 
+export type ProductType = {
+    id: string,
+    price: string,
+    title: string,
+    description: string
+}
+
 export type InitialStateType = {
-    products: any[]
+    products: ProductType[] | []
 }
 
 const initialState: InitialStateType = {
