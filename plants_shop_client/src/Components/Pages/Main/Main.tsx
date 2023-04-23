@@ -23,7 +23,13 @@ const Main = () => {
     }, [products])
 
     return (
-        <div className={styles.container}></div>
+        <div className={styles.container}>
+            <img src="./img/Main.png" alt="plant"></img>
+            <div className={styles.startSection}>
+                <div className={styles.title}>Best plants shop in the word!</div>
+                <div className={styles.subTitle}>Explore now</div>
+            </div>
+        </div>
     )
 }
 
