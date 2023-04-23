@@ -1,25 +1,17 @@
-// $color-darkest: #212121;
-// $color-darken: #303030;
-// $color-dark: #424242;
-// $color-green-lower: #698f34;
-// $color-green: #86c232;
-// $color-orange-lower: #b88c3a;
-// $color-orange: #f2ab27;
-// $color-red-lower:#a12f2f;
-// $color-red:#f23030;
-// $color-violet-lower: #8929c9;
-// $color-violet: #9305f2;
-// $color-blue-lower: #2685c0;
-// $color-blue: #0597f2;
-// $color-white:#eeeeee;
+$color-white: rgba(240, 240, 240, 1);
+$color-light-grey: rgba(235, 235, 235, 1);
+$color-one:#5ec27c;
+$color-two:#23ab88;
+$color-three:#00938b;
+$color-four:#007984;
+$color-five:#216072;
+$color-six:#2f4858;
+$color-red:rgb(247, 71, 91);
 
-
+$text-color: $color-white;
 $font-text: 'Poppins',
 sans-serif;
 
 $radius: 5px;
 $base-size: 12px;
 $transition: all 0.25s ease;
-
-// $color-background:$color-darkest;
-// $color-background:$color-white;

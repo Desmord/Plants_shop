@@ -23,7 +23,7 @@ const Main = () => {
     }, [products])
 
     return (
-        <div className={styles.container}>Main</div>
+        <div className={styles.container}></div>
     )
 }
 

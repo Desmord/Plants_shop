@@ -1,5 +1,55 @@
-.container{
-    width: 500px;
+@import "../../../Styles/settings.scss";
+
+.container {
+    width: 100%;
     height: 100px;
-    background-color: #579;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    color: $text-color;
+    z-index: 2;
+}
+
+.button {
+    transition: $transition;
+
+    &:hover {
+        background-color: $color-two;
+        cursor: pointer;
+    }
+}
+
+.menuButton {
+    padding: 10px;
+    margin-left: 30px;
+    border-radius: $radius;
+    font-size: calc($base-size * 1.5);
+    font-weight: 700;
+
+}
+
+.cart {
+    position: relative;
+    padding: 15px;
+    margin-right: 30px;
+    font-size: calc($base-size * 2);
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+
+    .productCounter {
+        position: absolute;
+        display: grid;
+        place-content: center;
+        width: 60%;
+        height: 60%;
+        left: 0px;
+        bottom: -10px;
+        border-radius: 50%;
+        font-size: calc($base-size * 1.5);
+        font-weight: 700;
+        background-color: $color-red;
+        pointer-events: none;
+    }
 }
