@@ -1,14 +1,19 @@
 @import "../../../Styles/settings.scss";
 
 .container {
+    position: fixed;
     width: 100%;
     height: 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: absolute;
+    position: fixed;
     color: $text-color;
-    z-index: 20;
+    z-index: 10;
+
+    a:visited {
+        color: $color-white;
+    }
 }
 
 .button {
@@ -26,12 +31,13 @@
     border-radius: $radius;
     font-size: calc($base-size * 1.5);
     font-weight: 700;
-
+    text-decoration: none;
 }
 
 .cart {
     position: relative;
-    padding: 15px;
+    width: 55px;
+    aspect-ratio: 1 /1;
     margin-right: 30px;
     font-size: calc($base-size * 2);
     border-radius: 50%;

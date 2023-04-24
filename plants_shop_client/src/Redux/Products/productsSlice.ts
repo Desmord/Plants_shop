@@ -5,7 +5,8 @@ export type ProductType = {
     id: string,
     price: string,
     title: string,
-    description: string
+    description: string,
+    images?: any[]
 }
 
 export type InitialStateType = {
@@ -23,7 +24,7 @@ const productsSlice = createSlice({
         getProducts: (state) => { return state },
         setProducts: (state, action: PayloadAction<any[]>) => {
             state.products = action.payload
-        }
+        },
     }
 })
 
