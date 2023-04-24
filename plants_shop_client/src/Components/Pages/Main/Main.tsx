@@ -4,7 +4,7 @@ import { getProducts } from '../../../Utilities/DataBase'
 import { setProducts } from '../../../Redux/Products/productsSlice'
 import { MAIN_IMAGES } from '../../../Utilities/Images'
 
-import Product from '../../Common/Product/Product';
+import Product from './SingleProduct/SingleProduct';
 
 import styles from './Main.module.scss'
 

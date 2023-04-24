@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux'
 import { BsSearch } from 'react-icons/bs';
-import { ProductType } from '../../../Redux/Products/productsSlice';
-import { IMAGES_FOLDER_URL } from '../../../Utilities/Images';
+import { ProductType } from '../../../../Redux/Products/productsSlice';
+import { IMAGES_FOLDER_URL } from '../../../../Utilities/Images';
 
-import styles from './Product.module.scss'
+import styles from './SingleProduct.module.scss'
 
 const Product = (({ productRef }: { productRef: React.RefObject<HTMLDivElement> }) => {
 

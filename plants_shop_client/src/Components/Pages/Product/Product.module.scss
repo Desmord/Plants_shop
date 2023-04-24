@@ -131,4 +131,9 @@
             height: 55px;
         }
     }
+
+    .productDetailsContinaier {
+        width: max(300px, 70%);
+        align-items: center;
+    }
 }
