@@ -43,6 +43,7 @@
     border-radius: 50%;
     display: grid;
     place-content: center;
+    z-index: 50;
 
     .productCounter {
         position: absolute;

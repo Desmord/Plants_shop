@@ -1,17 +1,22 @@
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { BsSearch } from 'react-icons/bs';
 import { ProductType } from '../../../../Redux/Products/productsSlice';
+import { setProductQuantity} from '../../../../Redux/Cart/cartSlice';
 import { IMAGES_FOLDER_URL } from '../../../../Utilities/Images';
 
 import styles from './SingleProduct.module.scss'
 
 const Product = (({ productRef }: { productRef: React.RefObject<HTMLDivElement> }) => {
 
+    const dispatch = useDispatch();
     const products = useSelector((state: any) => state.products.products);
 
     const addToCart = (plantId: string) => {
-        console.log(`Dodajemy do koszyka`)
+        const productToAdd = products.filter((product: ProductType) => product.id === plantId ? true : false)
+
+        if (productToAdd.length) dispatch(setProductQuantity({ givenProduct: productToAdd[0], newQuantity:1 }))
+
     }
 
     return (

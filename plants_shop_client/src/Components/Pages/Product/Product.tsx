@@ -1,23 +1,38 @@
-import { useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { useNavigate } from "react-router-dom";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { IMAGES_FOLDER_URL } from '../../../Utilities/Images';
+import { ProductType } from '../../../Redux/Products/productsSlice';
+import { setProductQuantity, removeProductFromCart } from '../../../Redux/Cart/cartSlice';
 
 import styles from './Product.module.scss'
-import { ProductType } from '../../../Redux/Products/productsSlice';
 
 const Product = () => {
 
     const navigate = useNavigate();
     const { id } = useParams();
+    const dispatch = useDispatch();
+    const cartProducts = useSelector((state: any) => state.cart.products);
     const product = useSelector((state: any) =>
         state.products.products.filter((product: ProductType) => product.id === id ? true : false));
 
+
     const [mainImageUrl, setMainImageUrl] = useState(``);
     const [productCount, setProductCount] = useState(`0`);
+    const [selectedProduct, setSelectedProduct] = useState<ProductType | null>(null);
 
     const getTotalPrice = () => product.length ? parseInt(productCount) * product[0].price : ``
+
+    const handleAddToCart = () => {
+
+        if (productCount !== `0`) {
+            dispatch(setProductQuantity({ givenProduct: selectedProduct, newQuantity: parseInt(productCount) }))
+        } else {
+            dispatch(removeProductFromCart({ productId: id ? id : `` }))
+        }
+
+    }
 
     useEffect(() => {
         const isPorductSelectedExist = product.length && product[0]?.id ? true : false;
@@ -26,10 +41,17 @@ const Product = () => {
     }, [product])
 
     useEffect(() => {
-        const isPorductSelectedExist = product.length && product[0]?.id ? true : false;
+        const searchProduct = product.length && product[0]?.id ? product[0] : false;
 
-        if (isPorductSelectedExist)
+        if (searchProduct) {
             setMainImageUrl(`../${IMAGES_FOLDER_URL}${product[0].title}/${product[0].images[0].img}.png`)
+            setSelectedProduct(searchProduct)
+
+            const isProductInCart = cartProducts.find((product: any) => product.product.id === id ? true : false)
+
+            if (isProductInCart)
+                setProductCount(isProductInCart.quantity)
+        }
 
     }, [])
 
@@ -66,6 +88,9 @@ const Product = () => {
                         maxLength={3}></input>
                     <div className={styles.total}>Total: {getTotalPrice()}</div>
                 </div>
+                <div
+                    onClick={() => handleAddToCart()}
+                    className={styles.addToCart}>Add to cart</div>
             </div>
         </div>
     )
