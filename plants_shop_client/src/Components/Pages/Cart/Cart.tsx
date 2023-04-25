@@ -1,5 +1,4 @@
 import { useSelector } from 'react-redux';
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom';
 
 import Product from './Product/Product';
@@ -10,10 +9,6 @@ const Cart = () => {
 
     const products = useSelector((state: any) => state.cart.products);
 
-    useEffect(() => {
-        console.log(`Koszyk: `, products)
-    }, [])
-
     return (
         <div className={styles.container}>
             <div className={styles.header}></div>
@@ -22,7 +17,7 @@ const Cart = () => {
                     {products.map((product: any, index: number) =>
                         (<Product product={product} key={index} />))}
                     <div className={styles.order}>
-                        <Link to="/Order">Order</Link>
+                        <Link to="/Order">Summary</Link>
                     </div>
                 </div> :
                 <div className={styles.emptyCart}>Empty Cart</div>}

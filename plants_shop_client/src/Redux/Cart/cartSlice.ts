@@ -20,17 +20,22 @@ const cartSlice = createSlice({
     reducers: {
         getCart: (state) => { return state },
         setProductQuantity: (state, action: PayloadAction<{ givenProduct: ProductType | null, newQuantity: number }>) => {
-
+            console.log(`nowa ilosc`)
             let products = JSON.parse(JSON.stringify(state.products));
             const isProductAlreadyAdded = products.find((product: any) =>
                 product.product.id === action.payload.givenProduct?.id ? true : false) ? true : false;
 
             if (isProductAlreadyAdded) {
                 products = products.map((product: ({ quantity: number, product: ProductType })) => {
-                    return {
-                        ...product,
-                        quantity: action.payload.newQuantity
+                    if (product.product.id === action.payload.givenProduct?.id) {
+                        return {
+                            ...product,
+                            quantity: action.payload.newQuantity
+                        }
+                    }else{
+                        return {...product}
                     }
+
                 })
             } else {
                 products.push({ quantity: action.payload.newQuantity, product: action.payload.givenProduct });
@@ -54,20 +59,13 @@ const cartSlice = createSlice({
         setProductNote: (state, action: PayloadAction<{ givenProduct: ProductType | null, newNote: string }>) => {
 
             let products = JSON.parse(JSON.stringify(state.products));
-            // const isProductAlreadyAdded = products.find((product: any) =>
-            //     product.product.id === action.payload.givenProduct?.id ? true : false) ? true : false;
 
-            // if (isProductAlreadyAdded) {
             products = products.map((product: ({ quantity: number, product: ProductType })) => {
                 return {
                     ...product,
                     notes: action.payload.newNote
                 }
             })
-            // } else {
-            //     products.push({ quantity: action.payload.newQuantity, product: action.payload.givenProduct });
-            // }
-
             state.products = products;
         },
     }

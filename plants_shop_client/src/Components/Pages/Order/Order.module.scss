@@ -1,5 +1,96 @@
+@import "../../../Styles/settings.scss";
+
 .container {
-    width: 100px;
-    height: 300px;
-    background-color: #ddd;
+    position: relative;
+    width: 100vw;
+    height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.header {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100px;
+    background-color: $color-one;
+}
+
+.productList {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 5px;
+}
+
+.product {
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 3px;
+
+
+    span:nth-of-type(1) {
+        width: 150px;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    span:nth-of-type(2) {
+        width: 75px;
+    }
+
+    span:nth-of-type(3) {
+        width: 75px;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
+
+.orderForm {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    textarea {
+        resize: none;
+        height: 80px;
+    }
+}
+
+.emptyCart{
+    display: grid;
+    place-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: calc($base-size * 4);
+    font-weight: 700;
+    color: $color-dark;
+}
+
+.totalPrice {
+    font-weight: 700;
+    font-size: calc($base-size * 1.5);
+}
+
+.orderButton {
+    padding: 10px 30px;
+    border: none;
+    border-radius: $radius;
+    background-color: $color-one;
+    color: $color-white;
+    font-weight: 700;
+    font-size: calc($base-size *1.5);
+    transition: $transition;
+
+    &:hover{
+        cursor: pointer;
+        background-color: darken($color-one,15);
+    }
+
 }
