@@ -1,5 +1,64 @@
+@import "../../../Styles/settings.scss";
+
 .container {
-    width: 100px;
-    height: 300px;
-    background-color: #600;
+    width: 100vw;
+    min-height: calc(100vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    a {
+        text-decoration: none;
+    }
+
+    a:visited {
+        color: $color-white;
+        text-decoration: none;
+    }
+}
+
+.header {
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100px;
+    background-color: $color-one;
+}
+
+.productList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.order {
+    margin-top: 20px;
+    padding: 10px 30px;
+    color: $color-white;
+    font-size: calc($base-size * 2.5);
+    font-weight: 700;
+    border-radius: $radius;
+    background-color: $color-one;
+    transition: $transition;
+
+    &:hover {
+        cursor: pointer;
+        background-color: darken($color-one, 15);
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.4);
+    }
+}
+
+.emptyCart {
+    display: grid;
+    place-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: calc($base-size * 4);
+    font-weight: 700;
+    color: $color-dark;
 }
