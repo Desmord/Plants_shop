@@ -30,7 +30,6 @@ function getPlant() {
   ];
 }
 
-
 function getImages() {
   return [
     {
