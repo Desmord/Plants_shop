@@ -12,11 +12,13 @@ import { OrdersModule } from './orders/orders.module';
 import { ImagesModule } from './images/images.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+// import "../../plants_shop_client/build"
 
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '../../', 'client'),
+      // rootPath: join(__dirname, '../../', 'client'),
+      rootPath: join(__dirname, '../../../plants_shop_client/', 'build'),
     }),
     ProductsModule,
     OrdersModule,
