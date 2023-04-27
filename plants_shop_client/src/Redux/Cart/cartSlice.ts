@@ -19,8 +19,9 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         getCart: (state) => { return state },
+        clearAllProductsFromCart: (state) => { state.products = [] },
         setProductQuantity: (state, action: PayloadAction<{ givenProduct: ProductType | null, newQuantity: number }>) => {
-            console.log(`nowa ilosc`)
+
             let products = JSON.parse(JSON.stringify(state.products));
             const isProductAlreadyAdded = products.find((product: any) =>
                 product.product.id === action.payload.givenProduct?.id ? true : false) ? true : false;
@@ -32,8 +33,8 @@ const cartSlice = createSlice({
                             ...product,
                             quantity: action.payload.newQuantity
                         }
-                    }else{
-                        return {...product}
+                    } else {
+                        return { ...product }
                     }
 
                 })
@@ -76,6 +77,7 @@ export const {
     setProductQuantity,
     removeProductFromCart,
     setProductNote,
+    clearAllProductsFromCart,
 } = cartSlice.actions;
 
 export default cartSlice.reducer;

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { IMAGES_FOLDER_URL } from '../../../Utilities/Images';
 import { ProductType } from '../../../Redux/Products/productsSlice';
 import { setProductQuantity, removeProductFromCart } from '../../../Redux/Cart/cartSlice';
+import { toast } from 'react-toastify';
 
 import styles from './Product.module.scss'
 
@@ -26,11 +27,26 @@ const Product = () => {
 
     const handleAddToCart = () => {
 
+        let tostyfiText = ``;
+
         if (productCount !== `0`) {
             dispatch(setProductQuantity({ givenProduct: selectedProduct, newQuantity: parseInt(productCount) }))
+            tostyfiText = `Product added successfully.`;
         } else {
             dispatch(removeProductFromCart({ productId: id ? id : `` }))
+            tostyfiText = `Product removed successfully.`;
         }
+
+        toast.success(tostyfiText, {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
 
     }
 

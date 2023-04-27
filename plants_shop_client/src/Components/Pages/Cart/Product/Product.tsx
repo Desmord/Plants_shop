@@ -6,6 +6,7 @@ import {
     setProductNote,
 } from '../../../../Redux/Cart/cartSlice';
 import { BsTrash3 } from 'react-icons/bs';
+import { toast } from 'react-toastify';
 
 import styles from './Product.module.scss'
 
@@ -17,20 +18,55 @@ const Product = ({ product }: { product: any }) => {
 
     const handleRemove = () => {
         dispatch(removeProductFromCart({ productId: product.product.id }))
+        toast.warn(`Product removed successfully.`, {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
     }
 
     const handleAddToCart = () => {
 
+        let tostyfiText = ``;
+
         if (productCount !== `0`) {
             dispatch(setProductQuantity({ givenProduct: product.product, newQuantity: parseInt(productCount) }))
+            tostyfiText = `Product added successfully.`;
         } else {
             dispatch(removeProductFromCart({ productId: product.product.id }))
+            tostyfiText = `Product removed successfully.`;
         }
+
+        toast.success(tostyfiText, {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
 
     }
 
     const handleAddNote = () => {
         dispatch(setProductNote({ givenProduct: product.product, newNote: clientNote }))
+        toast.success('Note added successfully.', {
+            position: "top-center",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
     }
 
     useEffect(() => {

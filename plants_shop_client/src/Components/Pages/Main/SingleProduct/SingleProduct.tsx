@@ -4,6 +4,7 @@ import { BsSearch } from 'react-icons/bs';
 import { ProductType } from '../../../../Redux/Products/productsSlice';
 import { setProductQuantity } from '../../../../Redux/Cart/cartSlice';
 import { IMAGES_FOLDER_URL } from '../../../../Utilities/Images';
+import { toast } from 'react-toastify';
 
 import styles from './SingleProduct.module.scss'
 
@@ -15,7 +16,19 @@ const Product = (({ productRef }: { productRef: React.RefObject<HTMLDivElement> 
     const addToCart = (plantId: string) => {
         const productToAdd = products.filter((product: ProductType) => product.id === plantId ? true : false)
 
-        if (productToAdd.length) dispatch(setProductQuantity({ givenProduct: productToAdd[0], newQuantity: 1 }))
+        if (productToAdd.length) {
+            dispatch(setProductQuantity({ givenProduct: productToAdd[0], newQuantity: 1 }))
+            toast.success('Product added successfully.', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
+        }
 
     }
 

@@ -1,12 +1,17 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { OREDERS_URL, PRODUCTS_URL } from '../../../Utilities/DataBase';
+import { toast } from 'react-toastify';
+import { clearAllProductsFromCart } from '../../../Redux/Cart/cartSlice';
 
 import styles from './Order.module.scss'
 
 const Order = () => {
 
     const products = useSelector((state: any) => state.cart.products);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [firstName, setFirstName] = useState(``);
     const [lastName, setLastName] = useState(``);
@@ -24,6 +29,27 @@ const Order = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
+        const isFirstNameEmpty = firstName.length ? false : true;
+        const isLastNameEmpty = lastName.length ? false : true;
+        const isAdressEmpty = adress.length ? false : true;
+
+        if (isFirstNameEmpty || isLastNameEmpty || isAdressEmpty) {
+
+            console.log(`safsaf`)
+            toast.error(`Error. EmptyFields.`, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+
+            return 0;
+        }
+
         const response = await fetch(OREDERS_URL, {
             method: `POST`,
             mode: `cors`,
@@ -40,7 +66,19 @@ const Order = () => {
 
         const jsonData = await response.json();
 
-        if (jsonData.error) return 0
+        if (jsonData.error) {
+            toast.error(`Error whie adding creating order.`, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            return 0
+        }
 
         const orderId = jsonData.id;
         let isSuccess = true;
@@ -68,9 +106,34 @@ const Order = () => {
         }
 
         if (isSuccess) {
-            // tostyfi i czycszcznie formu lub przejscie na strone głowna
+            dispatch(clearAllProductsFromCart())
+            toast.success(`Order added successfully. Redirecting to the Main page.`, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+            setTimeout(() => {
+
+                navigate(`/`)
+            }, 3100)
+
         } else {
-            // tostyfi
+            toast.error(`Error whie adding creating order.`, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+
         }
 
     }
