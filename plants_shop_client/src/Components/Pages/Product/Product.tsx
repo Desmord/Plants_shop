@@ -66,6 +66,7 @@ const Product = () => {
                     {product.length ? product[0].images.length < 2 ? `` :
                         product[0].images.map((image: { img: string }, index: number) =>
                             <img
+                                onTouchStart={() => setMainImageUrl(`../img/${product[0].title}/${image.img}.png`)}
                                 onClick={() => setMainImageUrl(`../img/${product[0].title}/${image.img}.png`)}
                                 key={index}
                                 src={`../${IMAGES_FOLDER_URL}${product[0].title}/${image.img}.png`} alt="small">
@@ -89,6 +90,7 @@ const Product = () => {
                     <div className={styles.total}>Total: {getTotalPrice()}</div>
                 </div>
                 <div
+                    onTouchStart={() => handleAddToCart()}
                     onClick={() => handleAddToCart()}
                     className={styles.addToCart}>Add to cart</div>
             </div>

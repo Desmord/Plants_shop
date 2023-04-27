@@ -44,6 +44,7 @@ const Product = ({ product }: { product: any }) => {
             <div className={styles.price}>${product.product.price}</div>
             <div className={styles.totalPrice}>Total price: ${product.quantity * product.product.price}</div>
             <div
+                onTouchStart={() => handleRemove()}
                 onClick={() => handleRemove()}
                 className={styles.removeProduct}><BsTrash3 /></div>
             <div className={styles.menu}>
@@ -56,6 +57,7 @@ const Product = ({ product }: { product: any }) => {
                     max="100"
                     maxLength={3}></input>
                 <div
+                    onTouchStart={() => handleAddToCart()}
                     onClick={() => handleAddToCart()}
                     className={styles.change}>Change Quantity</div>
             </div>
@@ -65,6 +67,7 @@ const Product = ({ product }: { product: any }) => {
                 maxLength={199}
                 className={styles.notes}></textarea>
             <div
+                onTouchStart={() => handleAddNote()}
                 onClick={() => handleAddNote()}
                 className={styles.addNotes}>Add note</div>
 

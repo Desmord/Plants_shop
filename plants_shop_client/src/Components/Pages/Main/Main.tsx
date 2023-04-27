@@ -40,6 +40,7 @@ const Main = () => {
                     <div className={styles.title}>Best plants shop in the word!</div>
                     <div
                         className={styles.subTitle}
+                        onTouchStart={() => scrollToProducts()}
                         onClick={() => scrollToProducts()}>
                         Explore Now
                     </div>
