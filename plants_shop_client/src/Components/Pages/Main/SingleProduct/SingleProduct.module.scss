@@ -1,0 +1,99 @@
+@import "../../../../Styles/settings.scss";
+
+.container {
+    padding: 20px;
+    margin-top: 30px;
+    width: max(400px, 70%);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product {
+    position: relative;
+    width: 200px;
+    aspect-ratio: 1 / 1.5;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 5fr 40px 30px 40px;
+    border-radius: $radius-big;
+    box-shadow: 3px 3px 5px 2px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+
+    img {
+        grid-column: 1/7;
+        grid-row: 1/2;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .plantName {
+        grid-column: 1/7;
+        grid-row: 2/3;
+        display: grid;
+        place-content: center;
+        font-weight: 700;
+        color: $color-dark;
+    }
+
+    .plantPrice {
+        grid-column: 1/7;
+        grid-row: 3/4;
+        display: grid;
+        place-content: center;
+        font-weight: 700;
+        color: $color-dark;
+    }
+
+    .addToCartButton {
+        position: absolute;
+        width: 100%;
+        height: 40px;
+        left: 0px;
+        bottom: -40px;
+        display: grid;
+        place-content: center;
+        color: $color-white;
+        font-weight: 700;
+        background-color: darken($color-one, 10);
+        transition: $transition;
+        text-decoration: none;
+
+        &:hover {
+            cursor: pointer;
+            background-color: darken($color-one, 20);
+        }
+    }
+
+    .showDetails {
+        position: absolute;
+        width: 100%;
+        height: calc(100% - 40px);
+        left: 0px;
+        display: grid;
+        place-content: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: $color-white;
+        font-size: calc($base-size * 4);
+        transition: $transition;
+        opacity: 0;
+
+        &:hover {
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    }
+
+
+    &:hover .showDetails {
+        opacity: 1;
+    }
+
+    &:hover .addToCartButton {
+        transform: translateY(-40px);
+    }
+
+
+}

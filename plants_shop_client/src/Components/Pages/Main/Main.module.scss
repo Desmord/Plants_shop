@@ -1,0 +1,107 @@
+@import "../../../Styles/settings.scss";
+
+.container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.splash {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    background-color: $color-one;
+    color: $color-white;
+    overflow: hidden;
+
+    &::before {
+        position: absolute;
+        left: -20%;
+        bottom: -50%;
+        content: "";
+        height: 200%;
+        aspect-ratio: 1 /1;
+        border-radius: 50%;
+        background-color: darken($color-one, 4);
+    }
+
+    img {
+        place-self: center;
+        height: 70vh;
+        aspect-ratio: 1 / 1.5;
+        opacity: 0.8;
+        grid-column: 1/2;
+        grid-row: 1/2;
+
+        &:first-of-type {
+            position: relative;
+            left: -125px;
+            height: 50vh;
+        }
+
+        &:nth-of-type(2) {
+            position: relative;
+            left: 125px;
+            height: 50vh;
+        }
+
+    }
+}
+
+.startSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+
+    .title {
+        padding: 40px;
+        font-size: calc($base-size * 2.7);
+        text-align: center;
+        font-weight: 700;
+        word-wrap: break-word;
+    }
+
+    .subTitle {
+        font-size: calc($base-size * 1.5);
+        text-align: center;
+        font-weight: 700;
+        padding: 10px 20px;
+        border-radius: $radius;
+        background-color: $color-three;
+        transition: $transition;
+
+        &:hover {
+            cursor: pointer;
+            background-color: darken($color-three, 8);
+        }
+    }
+}
+
+
+
+
+
+@media all and (max-width: 876px) {
+    .container {
+
+        .splash {
+            grid-template-columns: 1fr;
+
+            img {
+                display: none;
+            }
+        }
+    }
+
+    .products {
+        width: max(300px, 90%);
+    }
+}

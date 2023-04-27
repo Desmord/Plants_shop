@@ -1,0 +1,62 @@
+@import "../../../Styles/settings.scss";
+
+.container {
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    color: $text-color;
+    z-index: 10;
+
+    a:visited {
+        color: $color-white;
+    }
+}
+
+.button {
+    transition: $transition;
+
+    &:hover {
+        background-color: $color-two;
+        cursor: pointer;
+    }
+}
+
+.menuButton {
+    padding: 10px;
+    margin-left: 30px;
+    border-radius: $radius;
+    font-size: calc($base-size * 1.5);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.cart {
+    position: relative;
+    width: 55px;
+    aspect-ratio: 1 /1;
+    margin-right: 30px;
+    font-size: calc($base-size * 2);
+    border-radius: 50%;
+    display: grid;
+    place-content: center;
+    z-index: 50;
+
+    .productCounter {
+        position: absolute;
+        display: grid;
+        place-content: center;
+        width: 60%;
+        height: 60%;
+        left: 0px;
+        bottom: -10px;
+        border-radius: 50%;
+        font-size: calc($base-size * 1.5);
+        font-weight: 700;
+        background-color: $color-red;
+        pointer-events: none;
+    }
+}

@@ -1,0 +1,137 @@
+@import "../../../../Styles/settings.scss";
+
+.container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 200px 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 2fr;
+    gap: 5px;
+    width: 400px;
+    margin: 5px;
+    padding: 5px;
+    z-index: 70px;
+
+    &::after {
+        content: "";
+        position: absolute;
+        left: -15%;
+        bottom: -7px;
+        width: 130%;
+        height: 1px;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    &:last-of-type {
+        &::after {
+            display: none;
+        }
+    }
+}
+
+
+
+.title {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    font-size: calc($base-size * 2);
+    font-weight: 700;
+}
+
+.price {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.totalPrice {
+    grid-column: 1/3;
+    grid-row: 2/3;
+    display: flex;
+    align-items: center;
+    font-size: calc($base-size * 1.2);
+}
+
+.change {
+    display: grid;
+    place-content: center;
+    height: 100%;
+    padding: 5px;
+    font-size: $base-size;
+    color: $color-white;
+    background-color: $color-four;
+    border-radius: $radius;
+    transition: $transition;
+
+    &:hover {
+        cursor: pointer;
+        background-color: lighten($color-four, 15);
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    }
+}
+
+.removeProduct {
+    grid-column: 4/5;
+    grid-row: 1/2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    background-color: $color-red;
+    transition: $transition;
+    color: $color-white;
+
+    &:hover {
+        cursor: pointer;
+        background-color: darken($color-red, 15);
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    }
+
+}
+
+.myInput {
+    width: 80px;
+    height: 30px;
+    text-align: center;
+}
+
+.menu {
+    grid-column: 1/2;
+    grid-row: 3/4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.notes {
+    grid-column: 1/3;
+    grid-row: 4/5;
+    resize: none;
+}
+
+.addNotes {
+    display: grid;
+    place-content: center;
+    grid-column: 3/5;
+    grid-row: 4/5;
+    height: 35px;
+    padding: 5px;
+    font-size: $base-size;
+    color: $color-white;
+    background-color: $color-five;
+    border-radius: $radius;
+    transition: $transition;
+
+    &:hover {
+        cursor: pointer;
+        background-color: lighten($color-five, 15);
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    }
+}
