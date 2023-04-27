@@ -17,8 +17,8 @@ import { join } from 'path';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '../../', 'client'),
-      // rootPath: join(__dirname, '../../../plants_shop_client/', 'build'),
+      // rootPath: join(__dirname, '../../', 'client'),
+      rootPath: join(__dirname, '../../../plants_shop_client/', 'build'),
     }),
     ProductsModule,
     OrdersModule,
