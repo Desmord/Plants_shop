@@ -19,7 +19,14 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         getCart: (state) => { return state },
-        clearAllProductsFromCart: (state) => { state.products = [] },
+        setCart: (state, action: PayloadAction<[]>) => {
+            localStorage.setItem(`kodilla_project_cart`, JSON.stringify(state.products))
+            state.products = action.payload;
+        },
+        clearAllProductsFromCart: (state) => {
+            localStorage.setItem(`kodilla_project_cart`, JSON.stringify([]))
+            state.products = []
+        },
         setProductQuantity: (state, action: PayloadAction<{ givenProduct: ProductType | null, newQuantity: number }>) => {
 
             let products = JSON.parse(JSON.stringify(state.products));
@@ -42,6 +49,7 @@ const cartSlice = createSlice({
                 products.push({ quantity: action.payload.newQuantity, product: action.payload.givenProduct });
             }
 
+            localStorage.setItem(`kodilla_project_cart`, JSON.stringify(products))
             state.products = products;
         },
         removeProductFromCart: ((state, action: PayloadAction<{ productId: string }>) => {
@@ -52,8 +60,8 @@ const cartSlice = createSlice({
                 products = products.filter((product: ({ quantity: number, product: ProductType })) =>
                     product.product.id === action.payload.productId ? false : true)
 
+                localStorage.setItem(`kodilla_project_cart`, JSON.stringify(products))
                 state.products = products;
-
             }
 
         }),
@@ -67,6 +75,8 @@ const cartSlice = createSlice({
                     notes: action.payload.newNote
                 }
             })
+
+            localStorage.setItem(`kodilla_project_cart`, JSON.stringify(products))
             state.products = products;
         },
     }
@@ -74,6 +84,7 @@ const cartSlice = createSlice({
 
 export const {
     getCart,
+    setCart,
     setProductQuantity,
     removeProductFromCart,
     setProductNote,
