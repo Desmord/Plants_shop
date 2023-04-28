@@ -1,6 +1,7 @@
 @import "../../../../Styles/settings.scss";
 
 .container {
+    position: relative;
     padding: 20px;
     margin-top: 30px;
     width: max(400px, 70%);
@@ -10,8 +11,24 @@
     gap: 20px;
 }
 
+.searchBar {
+    position: absolute;
+    top: 0px;
+    margin: 0 auto;
+    width: 500px;
+    height: 35px;
+    text-align: center;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1);
+
+    &::placeholder{
+        opacity: 0.4;
+    }
+
+}
+
 .product {
     position: relative;
+    top: 50px;
     width: 200px;
     aspect-ratio: 1 / 1.5;
     display: grid;
@@ -96,4 +113,10 @@
     }
 
 
+}
+
+@media all and (max-width: 876px) {
+    .searchBar{
+        width: 300px;
+    }
 }
